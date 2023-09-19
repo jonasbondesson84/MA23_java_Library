@@ -1,18 +1,15 @@
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        String choice = "";
-        ArrayList<Book> books = new ArrayList<>();
-        Book book = new Book("", "", 0, 0);
+        String choice;
+        Library library = new Library();
 
         do {
             System.out.println("1. Add book to the library");
-            System.out.println("2. Search for a book by name");
+            System.out.println("2. Search for a book by title");
             System.out.println("3. List all available books");
             System.out.println("4. Reserv a book");
             System.out.println("5. Return a book");
@@ -21,32 +18,28 @@ public class Main {
 
             switch (choice) {
                 case "1" -> {
-                    book.addBook(books);
-                    for (Book currentBook : books) {
-                        System.out.println(currentBook + "\n");
+                    library.addBook(library.getBooks());
+                    for (Book currentBook : library.getBooks()) {
+                        System.out.println(currentBook);
                     }
-                    break;
+                    System.out.println();
                 }
                 case "2" -> {
-                    System.out.println(book.searchForBook(books) +"\n");
-                    break;
+                    System.out.println(library.searchForBook(library.getBooks()) + "\n");
                 }
                 case "3" -> {
-                    for (Book currentBook : books) {
+                    for (Book currentBook : library.getBooks()) {
                         if (currentBook.isAvailable()) {
                             System.out.println(currentBook);
                         }
                     }
                     System.out.println();
-                    break;
                 }
                 case "4" -> {
-                    book.reservBook(book.searchForBook(books));
-                    break;
+                    library.reservBook(library.searchForBook(library.getBooks()));
                 }
                 case "5" -> {
-                    book.returnBook(book.searchForBook(books));
-                    break;
+                    library.returnBook(library.searchForBook(library.getBooks()));
                 }
             }
 
