@@ -23,14 +23,12 @@ public class Main {
                 case "1" -> {
                     book.addBook(books);
                     for (Book currentBook : books) {
-                        System.out.println(currentBook);
+                        System.out.println(currentBook + "\n");
                     }
                     break;
                 }
                 case "2" -> {
-                    System.out.println(book.searchForBook(books));
-
-
+                    System.out.println(book.searchForBook(books) +"\n");
                     break;
                 }
                 case "3" -> {
@@ -39,13 +37,13 @@ public class Main {
                             System.out.println(currentBook);
                         }
                     }
+                    System.out.println();
                     break;
                 }
                 case "4" -> {
                     book.reservBook(book.searchForBook(books));
                     break;
                 }
-
                 case "5" -> {
                     book.returnBook(book.searchForBook(books));
                     break;

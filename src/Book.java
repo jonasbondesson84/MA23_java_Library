@@ -78,7 +78,6 @@ public class Book {
 
     public Book searchForBook(ArrayList<Book> books) {
         String searchTerm;
-        String answer;
         ArrayList<String> titleBooks = new ArrayList<>();
         System.out.println("Search for title:");
         searchTerm = sc.nextLine();
@@ -86,12 +85,8 @@ public class Book {
             if(book.title.equalsIgnoreCase(searchTerm)) {
                 return book;
             }
-
-
         }
-
         return null;
-
     }
 
     public void reservBook(Book book) {
@@ -101,20 +96,17 @@ public class Book {
             System.out.println("1. Yes");
             System.out.println("2. No");
             answer = sc.nextLine();
-            switch (answer) {
-                case "1" -> {
+            switch (answer.toLowerCase()) {
+                case "1", "yes " -> {
                     book.setAvailable(false);
-                    System.out.println("Book reserved!");
-                    break;
+                    System.out.println("Book reserved! \n");
                 }
-                case "2" -> {
-                    System.out.println("okey!");
-                    break;
-
+                case "2", "no" -> {
+                    System.out.println("Okay! \n");
                 }
             }
         } else {
-            System.out.println("Book does not exist or is already reserved.");
+            System.out.println("Book does not exist or is already reserved. \n");
         }
     }
 
@@ -125,25 +117,22 @@ public class Book {
             System.out.println("1. Yes");
             System.out.println("2. No");
             answer = sc.nextLine();
-            switch (answer) {
-                case "1" -> {
+            switch (answer.toLowerCase()) {
+                case "1", "yes" -> {
                     book.setAvailable(true);
-                    System.out.println("Book returned!");
-                    break;
+                    System.out.println("Book returned! \n");
                 }
-                case "2" -> {
-                    System.out.println("okey!");
-                    break;
-
+                case "2", "no" -> {
+                    System.out.println("Okay! /n");
                 }
             }
         } else {
-            System.out.println("Book does not exist or is not reserved.");
+            System.out.println("Book does not exist or is not reserved. \n");
         }
     }
 
 
     public String toString() {
-        return "Title: " + title + " - by " + author + ". Year " + year + ", edition " + edition + ". This book is " + available;
+        return "Title: " + title + " - by " + author + ". Year " + year + ", edition " + edition + ". This book is " + (available ? "available" : "reserved");
     }
 }
